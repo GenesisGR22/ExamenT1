@@ -8,6 +8,7 @@ namespace MiExamenT1
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        
+        public List<Cartas> listaCartas { get; set; }
+
     }
 }
