@@ -81,8 +81,39 @@ namespace MiExamenT1.Test
         {
             
             duelo.AgregarDuelo(jugadores);
+            Assert.Throws(typeof(Exception), ()=> duelo.GetGanador());
 
-            Assert.AreEqual("Empate", duelo.GetGanador());
+        }
+        [Test]
+        public void caso14()
+        {
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+            jugadores.Add(new Jugador());
+
+            duelo.AgregarDuelo(jugadores);
+            Assert.Throws(typeof(Exception), () => duelo.GetGanador());
+
+        }
+        [Test]
+        public void caso15()
+        {
+            jugadores.Add(new Jugador());
+           
+            duelo.AgregarDuelo(jugadores);
+            Assert.Throws(typeof(Exception), () => duelo.GetGanador());
 
         }
     }

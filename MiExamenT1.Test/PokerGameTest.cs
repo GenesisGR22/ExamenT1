@@ -165,5 +165,33 @@ namespace MiExamenT1.Test
             //Assert
             Assert.AreEqual("Flor Imperial", juego.GetJugada().Nombre);
         }
+        [Test]
+        public void caso16()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 10, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 11, Palo = "Trebol" });
+
+            juego.AddCarta(new Cartas { Valor = 12, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 14, Palo = "Trebol" });
+
+            //Assert
+            Assert.AreEqual("Flor Imperial", juego.GetJugada().Nombre);
+        }
+        [Test]
+        public void caso17()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 10, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 11, Palo = "corazon" });
+
+            juego.AddCarta(new Cartas { Valor = 12, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Diamante" });
+            juego.AddCarta(new Cartas { Valor = 14, Palo = "Trebol" });
+
+            //Assert
+            Assert.AreEqual("Escalera", juego.GetJugada().Nombre);
+        }
     }
 }
