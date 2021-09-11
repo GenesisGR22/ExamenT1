@@ -4,9 +4,10 @@ using System.Text;
 
 namespace MiExamenT1
 {
-    public class Cartas
+    public class Jugada
     {
         public int Valor { get; set; }
-        public string Palo { get; set; }
+
+        public String Nombre { get; set; }
     }
 }

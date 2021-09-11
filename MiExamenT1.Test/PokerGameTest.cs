@@ -5,28 +5,165 @@ using System.Text;
 
 namespace MiExamenT1.Test
 {
+    [TestFixture]
     public class PokerGameTest
     {
 
+        private PokerGame juego;
+
+        [SetUp]
+        public void Init()
+        {
+            juego = new PokerGame();
+        }
 
         [Test]
-        public void Caso01() //minimo de 2 jugadores
+        public void ManoDePokerEsCartaAlta()
         {
-            var juego = new PokerGame();
-            Assert.Throws(typeof(Exception), () => juego.Jugar(new List<Jugador>()));
+            //Act
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 3, Palo = "Diamante" });
+            juego.AddCarta(new Cartas { Valor = 5, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 7, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 9, Palo = "Corazon" });
+
+            //Assert
+            Assert.AreEqual("Carta Alta", juego.GetJugada().Nombre);
         }
+
         [Test]
-        public void Caso02() //max de 5 jugadores
+        public void ManoDePokerTieneUnDobleDeAses()
         {
-            var juego = new PokerGame();
-            var jugadores = new List<Jugador>();
-            jugadores.Add(new Jugador { Id= 1, Nombre = "j1"}); 
-            jugadores.Add(new Jugador { Id= 2, Nombre = "j2"}); 
-            jugadores.Add(new Jugador { Id= 3, Nombre = "j3"}); 
-            jugadores.Add(new Jugador { Id= 4, Nombre = "j4"}); 
-            jugadores.Add(new Jugador { Id= 5, Nombre = "j5"}); 
-            jugadores.Add(new Jugador { Id= 6, Nombre = "j6"}); 
-            Assert.Throws(typeof(Exception), () => juego.Jugar(jugadores));
+            //Act
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Diamante" });
+
+            juego.AddCarta(new Cartas { Valor = 5, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 7, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 9, Palo = "Corazon" });
+
+            //Assert
+            Assert.AreEqual("Un Doble", juego.GetJugada().Nombre);
+        }
+
+        [Test]
+        public void ManoDePokerTieneUnDobleTreces()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Diamante" });
+
+            juego.AddCarta(new Cartas { Valor = 5, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 9, Palo = "Corazon" });
+
+            //Assert
+            Assert.AreEqual("Un Doble", juego.GetJugada().Nombre);
+        }
+
+        [Test]
+        public void ManoDePokerTieneUnParDeDoblesAsesYTreces()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Diamante" });
+
+            juego.AddCarta(new Cartas { Valor = 5, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Diamante" });
+
+            //Assert
+            Assert.AreEqual("Dos Dobles", juego.GetJugada().Nombre);
+        }
+
+        [Test]
+        public void ManoDePokerTieneUnTrioDeAses()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Diamante" });
+
+            juego.AddCarta(new Cartas { Valor = 5, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Diamante" });
+
+            //Assert
+            Assert.AreEqual("Trio", juego.GetJugada().Nombre);
+        }
+
+        [Test]
+        public void ManoDePokerTieneUnaEscalera()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 3, Palo = "Diamante" });
+
+            juego.AddCarta(new Cartas { Valor = 2, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 4, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 5, Palo = "Diamante" });
+
+            //Assert
+            Assert.AreEqual("Escalera", juego.GetJugada().Nombre);
+        }
+
+        [Test]
+        public void ManoDePokerTieneFullHouse()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Diamante" });
+
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Diamante" });
+
+            //Assert
+            Assert.AreEqual("Full", juego.GetJugada().Nombre);
+        }
+
+        [Test]
+        public void ManoDePokerTienePoker()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Diamante" });
+
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Espada" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Diamante" });
+
+            //Assert
+            Assert.AreEqual("Poker", juego.GetJugada().Nombre);
+        }
+
+        [Test]
+        public void ManoDePokerTieneEscaleraColor()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 1, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 2, Palo = "Corazon" });
+
+            juego.AddCarta(new Cartas { Valor = 3, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 4, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 5, Palo = "Corazon" });
+
+            //Assert
+            Assert.AreEqual("Escalera Color", juego.GetJugada().Nombre);
+        }
+
+        [Test]
+        public void ManoDePokerTieneEscaleraReal()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 10, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 11, Palo = "Corazon" });
+
+            juego.AddCarta(new Cartas { Valor = 12, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 14, Palo = "Corazon" });
+
+            //Assert
+            Assert.AreEqual("Flor Imperial", juego.GetJugada().Nombre);
         }
     }
 }

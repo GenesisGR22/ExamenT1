@@ -6,9 +6,11 @@ namespace MiExamenT1
 {
     public class Jugador
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public List<Cartas> listaCartas { get; set; }
+        public List<Cartas> cartas;
+        public void AddJugada(List<Cartas> cartas)
+        {
+            this.cartas = cartas;
+        }
 
     }
 }

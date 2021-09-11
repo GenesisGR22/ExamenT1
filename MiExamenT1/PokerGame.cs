@@ -1,118 +1,142 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MiExamenT1
 {
     public class PokerGame
     {
-        private Random rand = new Random();
-        public List<Cartas> deck = new List<Cartas>();
-        public PokerGame()
+
+        public List<Cartas> jugada = new List<Cartas>();
+        public void AddCarta(Cartas carta)
         {
-            Cartas AofS = new Cartas(Palo.Espadas, Number.Ace);
-            deck.Add(AofS);
-            Cartas TwoofS = new Cartas(Palo.Espadas, Number.Dos);
-            deck.Add(TwoofS);
-            Cartas ThreeofS = new Cartas(Palo.Espadas, Number.Tres);
-            deck.Add(ThreeofS);
-            Cartas FourofS = new Cartas(Palo.Espadas, Number.Cuatro);
-            deck.Add(FourofS);
-            Cartas FiveofS = new Cartas(Palo.Espadas, Number.Cinco);
-            deck.Add(FiveofS);
-            Cartas SixofS = new Cartas(Palo.Espadas, Number.Seis);
-            deck.Add(SixofS);
-            Cartas SevenofS = new Cartas(Palo.Espadas, Number.Siete);
-            deck.Add(SevenofS);
-            Cartas EightofS = new Cartas(Palo.Espadas, Number.Ocho);
-            deck.Add(EightofS);
-            Cartas NineofS = new Cartas(Palo.Espadas, Number.Nueve);
-            deck.Add(NineofS);
-            Cartas TenofS = new Cartas(Palo.Espadas, Number.Diez);
-            deck.Add(TenofS);
-            Cartas JackofS = new Cartas(Palo.Espadas, Number.Jack);
-            deck.Add(JackofS);
-            Cartas QueenofS = new Cartas(Palo.Espadas, Number.Queen);
-            deck.Add(QueenofS);
-            Cartas KingofS = new Cartas(Palo.Espadas, Number.King);
-            deck.Add(KingofS);
-            Cartas AofH = new Cartas(Palo.Corazones, Number.Ace);
-            deck.Add(AofH);
-            Cartas TwoofH = new Cartas(Palo.Corazones, Number.Dos);
-            deck.Add(TwoofH);
-            Cartas ThreeofH = new Cartas(Palo.Corazones, Number.Tres);
-            deck.Add(ThreeofH);
-            Cartas FourofH = new Cartas(Palo.Corazones, Number.Cuatro);
-            deck.Add(FourofH);
-            Cartas FiveofH = new Cartas(Palo.Corazones, Number.Cinco);
-            deck.Add(FiveofH);
-            Cartas SixofH = new Cartas(Palo.Corazones, Number.Seis);
-            deck.Add(SixofH);
-            Cartas SevenofH = new Cartas(Palo.Corazones, Number.Siete);
-            deck.Add(SevenofH);
-            Cartas EightofH = new Cartas(Palo.Corazones, Number.Ocho);
-            deck.Add(EightofH);
-            Cartas NineofH = new Cartas(Palo.Corazones, Number.Nueve);
-            deck.Add(NineofH);
-            Cartas TenofH = new Cartas(Palo.Corazones, Number.Diez);
-            deck.Add(TenofH);
-            Cartas JackofH = new Cartas(Palo.Corazones, Number.Jack);
-            deck.Add(JackofH);
-            Cartas QueenofH = new Cartas(Palo.Corazones, Number.Queen);
-            deck.Add(QueenofH);
-            Cartas KingofH = new Cartas(Palo.Corazones, Number.King);
-            deck.Add(KingofH);
-            Cartas AofC = new Cartas(Palo.Trebol, Number.Ace);
-            deck.Add(AofC);
-            Cartas TwoofC = new Cartas(Palo.Trebol, Number.Dos);
-            deck.Add(TwoofC);
-            Cartas ThreeofC = new Cartas(Palo.Trebol, Number.Tres);
-            deck.Add(ThreeofC);
-            Cartas FourofC = new Cartas(Palo.Trebol, Number.Cuatro);
-            deck.Add(FourofC);
-            Cartas FiveofC = new Cartas(Palo.Trebol, Number.Cinco);
-            deck.Add(FiveofC);
-            Cartas SixofC = new Cartas(Palo.Trebol, Number.Seis);
-            deck.Add(SixofC);
-            Cartas SevenofC = new Cartas(Palo.Trebol, Number.Siete);
-            deck.Add(SevenofC);
-            Cartas EightofC = new Cartas(Palo.Trebol, Number.Ocho);
-            deck.Add(EightofC);
-            Cartas NineofC = new Cartas(Palo.Trebol, Number.Nueve);
-            deck.Add(NineofC);
-            Cartas TenofC = new Cartas(Palo.Trebol, Number.Diez);
-            deck.Add(TenofC);
-            Cartas JackofC = new Cartas(Palo.Trebol, Number.Jack);
-            deck.Add(JackofC);
-            Cartas QueenofC = new Cartas(Palo.Trebol, Number.Queen);
-            deck.Add(QueenofC);
-            Cartas KingofC = new Cartas(Palo.Trebol, Number.King);
-            deck.Add(KingofC);
-            Cartas AofD = new Cartas(Palo.Diamantes, Number.Ace);
-            deck.Add(AofD);
-            Cartas TwoofD = new Cartas(Palo.Diamantes, Number.Dos);
-            deck.Add(TwoofD);
-            Cartas ThreeofD = new Cartas(Palo.Diamantes, Number.Tres);
-            deck.Add(ThreeofD);
-            Cartas FourofD = new Cartas(Palo.Diamantes, Number.Cuatro);
-            deck.Add(FourofD);
-            Cartas FiveofD = new Cartas(Palo.Diamantes, Number.Cinco);
-            deck.Add(FiveofD);
-            Cartas SixofD = new Cartas(Palo.Diamantes, Number.Seis);
-            deck.Add(SixofD);
-            Cartas SevenofD = new Cartas(Palo.Diamantes, Number.Siete);
-            deck.Add(SevenofD);
-            Cartas EightofD = new Cartas(Palo.Diamantes, Number.Ocho);
-            deck.Add(EightofD);
-            Cartas NineofD = new Cartas(Palo.Diamantes, Number.Nueve);
-            deck.Add(NineofD);
-            Cartas TenofD = new Cartas(Palo.Diamantes, Number.Diez);
-            deck.Add(TenofD);
-            Cartas JackofD = new Cartas(Palo.Diamantes, Number.Jack);
-            deck.Add(JackofD);
-            Cartas QueenofD = new Cartas(Palo.Diamantes, Number.Queen);
-            deck.Add(QueenofD);
-            Cartas KingofD = new Cartas(Palo.Diamantes, Number.King);
-            deck.Add(KingofD);
+            jugada.Add(carta);
         }
+        public Jugada GetJugada()
+        {
+            if (TieneCartasConsecutivasDelMismoPaloYEmpiezaEn10())
+            {
+                return new Jugada { Valor = 9, Nombre = "Flor Imperial" };
+            }
+            if (TieneCartasConsecutivasDelMismoPalo())
+            {
+                return new Jugada { Valor = 8, Nombre = "Escalera Color" };
+            }
+            if (TieneCuatroCartasIguales())
+            {
+                return new Jugada { Valor = 7, Nombre = "Poker" };
+            }
+            if (TieneUnParYUnTrio())
+            {
+                return new Jugada { Valor = 6, Nombre = "Full" };
+            }
+            if (HayCincoCartasConcecutivas())
+            {
+                return new Jugada { Valor = 5, Nombre = "Escalera" };
+            }
+            if (TieneSoloTresCartasIguales())
+            {
+                return new Jugada { Valor = 4, Nombre = "Trio" };
+            }
+            // Si hay dos pares de cartas iguales
+            if (TieneUnParDeCartasIguales())
+            {
+                return new Jugada { Valor = 3, Nombre = "Dos Dobles" };
+            }
+            // si hay dos cartas iguales es un doble
+            if (TieneSoloDosCartasIguales())
+            {
+                return new Jugada { Valor = 2, Nombre = "Un Doble" };
+            }
+            return new Jugada { Valor = 1, Nombre = "Carta Alta" };
+        }
+
+        private bool TieneCartasConsecutivasDelMismoPaloYEmpiezaEn10()
+        {
+            var numeroDeCartasConsecutivas = 1;
+            var cartasOrdenadas = jugada.OrderBy(o => o.Valor).ToList();
+            for (var i = 0; i < cartasOrdenadas.Count() - 1; i++)
+            {
+                if ((cartasOrdenadas.ElementAt(i).Valor + 1 == cartasOrdenadas.ElementAt(i + 1).Valor) &&
+                    (cartasOrdenadas.ElementAt(i).Palo == cartasOrdenadas.ElementAt(i + 1).Palo))
+                    numeroDeCartasConsecutivas++;
+            }
+            return numeroDeCartasConsecutivas == 5 && cartasOrdenadas.ElementAt(0).Valor == 10;
+        }
+
+        private bool TieneCartasConsecutivasDelMismoPalo()
+        {
+            var numeroDeCartasConsecutivas = 1;
+            var cartasOrdenadas = jugada.OrderBy(o => o.Valor).ToList();
+            for (var i = 0; i < cartasOrdenadas.Count() - 1; i++)
+            {
+                if ((cartasOrdenadas.ElementAt(i).Valor + 1 == cartasOrdenadas.ElementAt(i + 1).Valor) &&
+                    (cartasOrdenadas.ElementAt(i).Palo == cartasOrdenadas.ElementAt(i + 1).Palo))
+                    numeroDeCartasConsecutivas++;
+            }
+            return numeroDeCartasConsecutivas == 5;
+        }
+
+        private bool TieneCuatroCartasIguales()
+        {
+            return GetNumeroDeColectivos(4) == 1;
+        }
+
+        private bool TieneUnParYUnTrio()
+        {
+            return TieneSoloTresCartasIguales() && TieneSoloDosCartasIguales();
+        }
+
+
+        private bool HayCincoCartasConcecutivas()
+        {
+            var numeroDeCartasConsecutivas = 1;
+            var cartasOrdenadas = jugada.OrderBy(o => o.Valor).ToList();
+            for (var i = 0; i < cartasOrdenadas.Count() - 1; i++)
+            {
+                numeroDeCartasConsecutivas += (cartasOrdenadas.ElementAt(i).Valor + 1) == cartasOrdenadas.ElementAt(i + 1).Valor ? 1 : 0;
+            }
+            return numeroDeCartasConsecutivas == 5;
+        }
+
+        private bool TieneSoloTresCartasIguales()
+        {
+            return GetNumeroDeColectivos(3) == 1;
+
+        }
+
+        private bool TieneUnParDeCartasIguales()
+        {
+            return GetNumeroDeColectivos(2) == 2;
+        }
+
+        private bool TieneSoloDosCartasIguales()
+        {
+            return GetNumeroDeColectivos(2) == 1;
+        }
+
+
+        private int GetNumeroDeColectivos(int colectivosDe)
+        {
+            var numerodeColectivos = 0;
+
+            for (var valor = 1; valor <= 14; valor++)
+            {
+                var numCartasIguales = 0;
+                for (var j = 0; j < jugada.Count(); j++)
+                {
+                    var carta = jugada.ElementAt(j);
+                    if (carta.Valor == valor)
+                        numCartasIguales++;
+                }
+
+                if (numCartasIguales == colectivosDe)
+                    numerodeColectivos++;
+
+            }
+            return numerodeColectivos;
+        }
+
+    }
 }
