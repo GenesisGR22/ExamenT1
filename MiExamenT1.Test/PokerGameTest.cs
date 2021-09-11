@@ -319,5 +319,61 @@ namespace MiExamenT1.Test
             //Assert
             Assert.AreEqual("Escalera", juego.GetJugada().Nombre);
         }
+        [Test]
+        public void caso27()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 10, Palo = "Trebol " });
+            juego.AddCarta(new Cartas { Valor = 11, Palo = "Diamante" });
+
+            juego.AddCarta(new Cartas { Valor = 12, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 14, Palo = "Trebol" });
+
+            //Assert
+            Assert.AreEqual("Escalera", juego.GetJugada().Nombre);
+        }
+        [Test]
+        public void caso28()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 10, Palo = "Diamante " });
+            juego.AddCarta(new Cartas { Valor = 11, Palo = "Trebol" });
+
+            juego.AddCarta(new Cartas { Valor = 12, Palo = "Trebol" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Diamante" });
+            juego.AddCarta(new Cartas { Valor = 14, Palo = "Corazon" });
+
+            //Assert
+            Assert.AreEqual("Escalera", juego.GetJugada().Nombre);
+        }
+        [Test]
+        public void caso29()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 10, Palo = "Corazon " });
+            juego.AddCarta(new Cartas { Valor = 11, Palo = "Diamante" });
+
+            juego.AddCarta(new Cartas { Valor = 12, Palo = "Diamante" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Diamante" });
+            juego.AddCarta(new Cartas { Valor = 14, Palo = "Trebol" });
+
+            //Assert
+            Assert.AreEqual("Escalera", juego.GetJugada().Nombre);
+        }
+        [Test]
+        public void caso30()
+        {
+            //Act
+            juego.AddCarta(new Cartas { Valor = 10, Palo = "Trebol " });
+            juego.AddCarta(new Cartas { Valor = 11, Palo = "Corazon" });
+
+            juego.AddCarta(new Cartas { Valor = 12, Palo = "Diamante" });
+            juego.AddCarta(new Cartas { Valor = 13, Palo = "Corazon" });
+            juego.AddCarta(new Cartas { Valor = 14, Palo = "Trebol" });
+
+            //Assert
+            Assert.AreEqual("Escalera", juego.GetJugada().Nombre);
+        }
     }
 }
