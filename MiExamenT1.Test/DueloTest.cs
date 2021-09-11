@@ -73,8 +73,17 @@ namespace MiExamenT1.Test
             jugadores.Add(jugadorB);
             duelo.AgregarDuelo(jugadores);
 
-            Assert.AreEqual("Jugador B", duelo.GetGanador());
-            Assert.AreEqual("Un Doble", duelo.GetJugada());
+            Assert.AreEqual("Empate", duelo.GetGanador());
+         
+        }
+        [Test]
+        public void caso13()
+        {
+            
+            duelo.AgregarDuelo(jugadores);
+
+            Assert.AreEqual("Empate", duelo.GetGanador());
+
         }
     }
 }

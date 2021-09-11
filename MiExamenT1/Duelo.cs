@@ -7,41 +7,50 @@ namespace MiExamenT1
     public class Duelo
     {
         private List<Jugador> jugadores;
-        //private List<Jugador> jugadorA;
-        private Jugador jugadorB;
+ 
 
         private String JugadaGanadora;
 
 
 
-        //public void AgregarDuelo(Jugador jugadorA, Jugador jugadorB)
+       
         public void AgregarDuelo(List<Jugador> jugadores)
         {
             this.jugadores = jugadores;
-            //this.jugadorB = jugadorB;
+          
         }
 
         public string GetGanador()
         {
+            menosDeDosJugadores(jugadores);
+            masDeCincoJugadores(jugadores);
+            var jugadas = new List<Jugada>();
             for (int i = 0; i < jugadores.Count; i++)
             {
-                var jugadaA = GetJugada(jugadores[i].cartas);
-                var jugadaB = GetJugada(jugadorB.cartas);
-
-
-                if (jugadaA.Valor > jugadaB.Valor)
-                {
-                    JugadaGanadora = jugadaA.Nombre;
-                    return "Jugador A";
-                }
-                else if (jugadaA.Valor == jugadaB.Valor)
-                {
-                    return "Empate";
-                }
-                JugadaGanadora = jugadaB.Nombre;
+                jugadas.Add(GetJugada(jugadores[i].cartas));
+               
             }
-            //var jugadaA = GetJugada(jugadores.cartas);
-            
+            var jugada = new Jugada();
+
+            for (int i = 0; i < jugadas.Count; i++)
+            {
+                for (int j = 0; j < jugadas.Count; j++)
+                {
+                    if (jugadas[i].Valor > jugadas[j].Valor)
+                    {
+                        JugadaGanadora = jugadas[i].Nombre;
+                        return "Jugador A";
+                    }
+                    else if (jugadas[i].Valor == jugadas[j].Valor)
+                    {
+                        jugada.Nombre = "Empate";
+                        return "Empate";
+                    }
+                    JugadaGanadora = jugadas[i].Nombre;
+                }
+            }
+
+
             return "Jugador B";
         }
 
@@ -61,6 +70,18 @@ namespace MiExamenT1
         public string GetJugada()
         {
             return JugadaGanadora;
+        }
+
+
+        public void menosDeDosJugadores(List<Jugador> jugadores)
+        {
+            if(jugadores.Count < 2)
+                throw new Exception(" Debes ser mayor");
+        }
+        public void masDeCincoJugadores(List<Jugador> jugadores)
+        {
+            if (jugadores.Count > 5)
+                throw new Exception(" Debes ser mayor");
         }
     }
 }
